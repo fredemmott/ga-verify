@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+_SELF=File.readlink(__FILE__) rescue __FILE__
+_ROOT=File.expand_path(File.dirname(_SELF) + '/../lib')
+$LOAD_PATH.push _ROOT
+
+require 'ga_verify/paths'
+options = {
+  :socket => GAVerify::Paths.default_socket,
+}
+
+require 'optparse'
+
+optparse = OptionParser.new do |opts|
+  opts.on(
+    '-s', '--socket PATH',
+    "Default: #{options[:socket]}"
+  ) do |path|
+    options[:socket] = path
+  end
+end
+optparse.parse!
+
+require 'ga_verify/server'
+GAVerify::Server.new(options[:socket]).serve!

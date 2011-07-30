@@ -1,0 +1,4 @@
+.rvmrc
+gen-rb/
+*~
+*.swp

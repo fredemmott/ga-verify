@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+_SELF=File.readlink(__FILE__) rescue __FILE__
+_ROOT=File.expand_path(File.dirname(_SELF) + '/../lib')
+$LOAD_PATH.push _ROOT
+
+require 'ga_verify/paths'
+options = {
+  :socket => GAVerify::Paths.default_socket,
+}
+
+require 'optparse'
+
+optparse = OptionParser.new do |opts|
+  opts.banner += " USER TOKEN"
+  opts.on(
+    '-s', '--socket PATH',
+    "Default: #{options[:socket]}"
+  ) do |path|
+    options[:socket] = path
+  end
+end
+optparse.parse!
+
+if ARGV.size != 2
+  STDERR.write optparse.help
+  exit 1
+end
+user, token = ARGV[0], ARGV[1].to_i
+
+require 'ga_verify/client'
+result = GAVerify::Client.new(options).check_user(user, token)
+puts GAVerify::Result::VALUE_MAP[result]
+exit result
