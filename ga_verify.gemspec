@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Fred Emmott"]
   s.email       = ["mail@fredemmott.co.uk"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/fredemmott/ga-verify"
   s.summary     = "Thrift client and server for validating google authenticator tokens"
   s.description = "Provides a unix socket for validating tokens"
 
