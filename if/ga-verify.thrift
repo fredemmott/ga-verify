@@ -1,3 +1,5 @@
+# Copyright 2011-present Fred Emmott. See COPYING file.
+
 namespace rb GAVerify
 enum Result {
   SUCCESS = 0,

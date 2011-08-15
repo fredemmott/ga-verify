@@ -10,11 +10,13 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/fredemmott/ga-verify"
   s.summary     = "Thrift client and server for validating google authenticator tokens"
   s.description = "Provides a unix socket for validating tokens"
+  s.license     = 'ISC'
 
   s.add_dependency 'rotp',   '~> 1.3.0'
   s.add_dependency 'thrift', '~> 0.6.0'
 
   s.files       = FileList[
+    'COPYING',
     'bin/*',
     'lib/**/*.rb',
     'gen-rb/*.rb',

@@ -1,3 +1,4 @@
+# Copyright 2011-present Fred Emmott. See COPYING file.
 module GAVerify
   module Paths
     def self.default_socket

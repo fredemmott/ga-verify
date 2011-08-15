@@ -1,3 +1,4 @@
+# Copyright 2011-present Fred Emmott. See COPYING file.
 require 'ga_verify/thrift'
 require 'ga_verify/paths'
 
