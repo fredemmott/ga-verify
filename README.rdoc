@@ -1,0 +1,52 @@
+= Overview
+
+This is:
+* a Thrift daemon for validating Google Authenticator tokens
+* a Ruby client
+* an example client
+
+It is easy to create a client in any language supported by Apache Thrift.
+
+= Usage
+
+Assuming google-authenticator is setup, as root:
+  bin/ga-verifyd &
+  chmod 777 /var/run/ga_verifyd.sock
+
+Then as an unprivileged user:
+  bin/ga-verify fred 123456
+
+
+<tt>bin/ga-verify</tt> is a small example client.
+
+= Getting it
+
+ git clone git://github.com/fredemmott/ga-verify.git
+
+or
+
+ gem install ga_verify
+
+= Security
+
+The main goal of this is to make it so that google authenticator tokens
+can be checked by untrusted processes, without having to give them
+permission to read the google authenticator files.
+
+Also consider:
+* 1 token past or previous is allowed
+* Tokens can not be re-used within 10 minutes - after that amount of time,
+  they would be invalid anyway
+* It currently only supports running on a unix socket, not TCP
+
+= Shortcomings
+
+It merely checks the code is valid given the above constraints. It does
+not currently use Google's PAM implementation, so it supports none of the
+following:
+* scratch codes
+* per-user retry and re-use settings
+
+= Copying
+
+See the COPYING file.

@@ -1,9 +1,12 @@
 #!/usr/bin/env ruby
 # Copyright 2011-present Fred Emmott. See COPYING file.
+
+# Make this work without needing the gem installed
 _SELF=File.readlink(__FILE__) rescue __FILE__
 _ROOT=File.expand_path(File.dirname(_SELF) + '/../lib')
 $LOAD_PATH.push _ROOT
 
+# Load options and defaults
 require 'ga_verify/paths'
 options = {
   :socket => GAVerify::Paths.default_socket,
@@ -26,6 +29,8 @@ if ARGV.size != 2
   STDERR.write optparse.help
   exit 1
 end
+
+# Actually check the token via the server
 user, token = ARGV[0], ARGV[1].to_i
 
 require 'ga_verify/client'

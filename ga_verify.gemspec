@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
 
   s.files       = FileList[
     'COPYING',
+    'README.rdoc',
     'bin/*',
     'lib/**/*.rb',
     'gen-rb/*.rb',
